@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aarav ❤️ Meera | Wedding</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #fff1f2, #ffe4e6);
+  text-align: center;
+  color: #333;
+}
+
+header {
+  padding: 60px 20px;
+}
+
+h1 {
+  font-size: 3em;
+  color: #be185d;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+.section {
+  padding: 40px 20px;
+}
+
+.card {
+  background: white;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+img {
+  width: 150px;
+  border-radius: 12px;
+  margin: 10px;
+}
+
+.gallery img {
+  width: 120px;
+}
+
+button {
+  background: #be185d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#countdown {
+  font-size: 1.5em;
+  color: #be185d;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <h1>Aarav ❤️ Meera</h1>
+  <h2>We’re getting married!</h2>
+</header>
+
+<div class="section card">
+  <h3>📅 Wedding Date</h3>
+  <p>May 6, 2026</p>
+  <div id="countdown"></div>
+</div>
+
+<div class="section card">
+  <h3>📍 Venue</h3>
+  <p>Grand Palace Banquet Hall, Hyderabad</p>
+  <button onclick="openMap()">View Location</button>
+</div>
+
+<div class="section card">
+  <h3>💑 Couple</h3>
+  <img src="https://randomuser.me/api/portraits/men/32.jpg">
+  <img src="https://randomuser.me/api/portraits/women/44.jpg">
+</div>
+
+<div class="section card gallery">
+  <h3>📸 Family Moments</h3>
+  <img src="https://picsum.photos/200?1">
+  <img src="https://picsum.photos/200?2">
+  <img src="https://picsum.photos/200?3">
+</div>
+
+<div class="section card">
+  <h3>💌 A Note</h3>
+  <p>Wishing you a lifetime of love, laughter, and happiness.  
+  – With love, Sagar</p>
+</div>
+
+<script>
+// Countdown Timer
+const weddingDate = new Date("May 6, 2026 00:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const gap = weddingDate - now;
+
+  const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+
+  document.getElementById("countdown").innerText =
+    days + " days " + hours + " hours remaining";
+}, 1000);
+
+// Google Maps
+function openMap() {
+  window.open("https://maps.google.com?q=Hyderabad Grand Palace Hall");
+}
+</script>
+
+</body>
+</html>
