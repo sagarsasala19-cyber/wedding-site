@@ -1,161 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aarav ❤️ Meera Wedding</title>
+<title>Wedding Invite</title>
 
 <style>
 body {
-  margin: 0;
+  margin:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  background: linear-gradient(135deg,#be185d,#f472b6);
+  color:white;
   font-family: Arial;
-  background: linear-gradient(135deg, #ffe4e6, #fff1f2);
-  text-align: center;
-  overflow-x: hidden;
 }
 
-/* Loading screen */
-#loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #be185d;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5em;
-  z-index: 999;
+.box {
+  text-align:center;
 }
 
-/* Cards */
-.card {
-  background: rgba(255,255,255,0.85);
-  margin: 25px auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 650px;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 1s;
-}
-
-.card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-h1 { color: #be185d; }
-
-/* Buttons */
 button {
-  background: #be185d;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-/* Confetti */
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: red;
-  top: -10px;
-  animation: fall 4s linear infinite;
-}
-
-@keyframes fall {
-  to { transform: translateY(100vh) rotate(360deg); }
+  padding:15px 25px;
+  border:none;
+  border-radius:10px;
+  font-size:18px;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">💍 Loading Wedding Experience...</div>
-
-<!-- CONTENT -->
-<div class="card">
+<div class="box">
   <h1>Aarav ❤️ Meera</h1>
-  <p>Wedding Celebration 💍</p>
-</div>
-
-<div class="card">
-  <h2>📅 May 6, 2026</h2>
-  <h3 id="countdown"></h3>
-</div>
-
-<div class="card">
-  <h2>📍 Venue</h2>
-  <p>Grand Palace Banquet Hall, Hyderabad</p>
-  <button onclick="openMap()">Open Map</button>
-</div>
-
-<div class="card">
-  <h2>📩 RSVP</h2>
-  <input id="name" placeholder="Your Name"><br><br>
-  <button onclick="sendRSVP()">Confirm RSVP</button>
-  <p id="msg"></p>
+  <p>You are invited 💌</p>
+  <button onclick="openInvite()">Open Invitation</button>
 </div>
 
 <script>
-// Loader
-window.onload = () => {
-  setTimeout(() => {
-    document.getElementById("loader").style.display = "none";
-    createConfetti();
-    revealCards();
-  }, 1500);
-};
-
-// Reveal animation
-function revealCards() {
-  document.querySelectorAll(".card").forEach((c, i) => {
-    setTimeout(() => c.classList.add("show"), i * 300);
-  });
-}
-
-// Countdown
-const date = new Date("May 6, 2026").getTime();
-setInterval(() => {
-  let now = new Date().getTime();
-  let diff = date - now;
-  let days = Math.floor(diff / (1000*60*60*24));
-  document.getElementById("countdown").innerHTML =
-    "⏳ " + days + " days left";
-}, 1000);
-
-// Map
-function openMap() {
-  window.open("https://maps.google.com?q=Hyderabad Grand Palace Banquet Hall");
-}
-
-// RSVP (Google Sheets ready hook)
-function sendRSVP() {
-  let name = document.getElementById("name").value;
-
-  document.getElementById("msg").innerHTML =
-    "Thank you " + name + " 💖 RSVP received!";
-
-  // You can connect Google Sheets here later
-}
-
-// Confetti effect
-function createConfetti() {
-  for (let i = 0; i < 80; i++) {
-    let conf = document.createElement("div");
-    conf.classList.add("confetti");
-    conf.style.left = Math.random() * 100 + "vw";
-    conf.style.background = ["#be185d","#ff4d6d","#facc15","#60a5fa"][Math.floor(Math.random()*4)];
-    conf.style.animationDuration = (Math.random()*3 + 2) + "s";
-    document.body.appendChild(conf);
-  }
+function openInvite(){
+  window.location.href = "invitation.html" + window.location.search;
 }
 </script>
 
