@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitation</title>
+
+<style>
+body {
+  margin:0;
+  font-family: Georgia;
+  background:#fff5f5;
+  text-align:center;
+}
+
+.card {
+  margin:30px;
+  padding:25px;
+  background:white;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+h1 { color:#be185d; }
+
+button {
+  padding:10px 15px;
+  border:none;
+  border-radius:8px;
+  background:#be185d;
+  color:white;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d5b7b4c0f2.mp3">
+</audio>
+
+<div class="card">
+  <h2>Dear <span id="guest"></span> & Family 💖</h2>
+
+  <p>We invite you to celebrate the wedding of</p>
+
+  <h1>Aarav ❤️ Meera</h1>
+
+  <p>📅 May 6, 2026</p>
+  <p>📍 Grand Palace Banquet Hall</p>
+
+  <button onclick="playMusic()">🎵 Play Music</button>
+  <br><br>
+  <button onclick="goStory()">View Our Story</button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("guest").innerText =
+  params.get("to") || "Guest";
+
+function playMusic(){
+  document.getElementById("music").play();
+}
+
+function goStory(){
+  window.location.href = "story.html" + window.location.search;
+}
+</script>
+
+</body>
+</html>
