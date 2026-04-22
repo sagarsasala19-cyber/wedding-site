@@ -2,28 +2,61 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+<title>Wedding Invitation</title>
 
 <style>
 body {
   margin:0;
-  font-family: Georgia;
-  background:#fff5f5;
-  text-align:center;
+  font-family: 'Poppins', sans-serif;
+  background: black;
+  color: white;
+  text-align: center;
+  overflow-x:hidden;
+}
+
+/* Hero Section */
+.hero {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background: url("https://images.unsplash.com/photo-1529634806980-85c3dd6d34ac") no-repeat center/cover;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.6);
+  position:absolute;
+  width:100%;
+  height:100%;
+}
+
+.hero-content {
+  position:relative;
+  z-index:2;
+}
+
+h1 {
+  font-family:'Playfair Display', serif;
+  font-size:3em;
+}
+
+.section {
+  padding:60px 20px;
 }
 
 .card {
-  margin:30px;
+  background: rgba(255,255,255,0.1);
   padding:25px;
-  background:white;
   border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
 }
 
-h1 { color:#be185d; }
-
 button {
-  padding:10px 15px;
+  padding:12px 20px;
   border:none;
   border-radius:8px;
   background:#be185d;
@@ -35,23 +68,22 @@ button {
 
 <body>
 
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_d5b7b4c0f2.mp3">
-</audio>
+<div class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h2>Dear <span id="guest"></span></h2>
+    <h1>Aarav ❤️ Meera</h1>
+    <p>We invite you to our wedding</p>
+  </div>
+</div>
 
-<div class="card">
-  <h2>Dear <span id="guest"></span> & Family 💖</h2>
-
-  <p>We invite you to celebrate the wedding of</p>
-
-  <h1>Aarav ❤️ Meera</h1>
-
-  <p>📅 May 6, 2026</p>
-  <p>📍 Grand Palace Banquet Hall</p>
-
-  <button onclick="playMusic()">🎵 Play Music</button>
-  <br><br>
-  <button onclick="goStory()">View Our Story</button>
+<div class="section">
+  <div class="card">
+    <h2>Wedding Details</h2>
+    <p>📅 May 6, 2026</p>
+    <p>📍 Grand Palace Banquet Hall</p>
+    <button onclick="openMap()">View Location</button>
+  </div>
 </div>
 
 <script>
@@ -59,12 +91,8 @@ const params = new URLSearchParams(window.location.search);
 document.getElementById("guest").innerText =
   params.get("to") || "Guest";
 
-function playMusic(){
-  document.getElementById("music").play();
-}
-
-function goStory(){
-  window.location.href = "story.html" + window.location.search;
+function openMap(){
+  window.open("https://maps.google.com?q=Grand Palace Hall");
 }
 </script>
 
